@@ -71,7 +71,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
     default=True,
 )
 
-AWS_DEFAULT_ACL = env("DJANGO_AWS_DEFAULT_ACL", default="private")
+# Disable ACLs since bucket doesn't support them
+AWS_DEFAULT_ACL = env("DJANGO_AWS_DEFAULT_ACL", default=None)
 AWS_S3_SECURE_URLS = env.bool("DJANGO_AWS_S3_SECURE_URLS", default=True)
 AWS_IS_GZIPPED = env.bool("DJANGO_AWS_IS_GZIPPED", default=True)
 AWS_S3_FILE_OVERWRITE = env.bool("DJANGO_AWS_S3_FILE_OVERWRITE", default=False)
@@ -122,7 +123,7 @@ STORAGES = {
         "BACKEND": "storages.backends.s3.S3Storage",
         "OPTIONS": {
             "location": "static",
-            "default_acl": "public-read",
+            # Removed default_acl since bucket doesn't support ACLs
         },
     },
 }
