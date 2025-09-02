@@ -41,6 +41,17 @@ http:
         # https://doc.traefik.io/traefik/routing/routers/#certresolver
         certResolver: letsencrypt
 
+    static-router:
+      rule: 'Host(`portalempleos.com.mx`) && (PathPrefix(`/static/`))'
+      entryPoints:
+        - web-secure
+      middlewares:
+        - static-cache
+        - static-headers
+      service: django
+      tls:
+        certResolver: letsencrypt
+
     flower-secure-router:
       rule: 'Host(`portalempleos.com.mx`)'
       entryPoints:
@@ -56,6 +67,21 @@ http:
       # https://docs.djangoproject.com/en/dev/ref/csrf/#ajax
       headers:
         hostsProxyHeaders: ['X-CSRFToken']
+    
+    static-cache:
+      # Cache middleware para archivos estáticos
+      headers:
+        customResponseHeaders:
+          Cache-Control: "public, max-age=31536000, immutable"
+          Expires: "Thu, 31 Dec 2025 23:59:59 GMT"
+    
+    static-headers:
+      # Headers de seguridad para archivos estáticos
+      headers:
+        customResponseHeaders:
+          X-Content-Type-Options: "nosniff"
+          X-Frame-Options: "DENY"
+          Referrer-Policy: "strict-origin-when-cross-origin"
 
   services:
     django:
