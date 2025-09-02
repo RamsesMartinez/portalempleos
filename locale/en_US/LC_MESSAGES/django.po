@@ -1,6 +1,6 @@
 # Translations for the Portal Empleos project
 # Copyright (C) 2025 Ramses Martinez
-# Ramses Martinez <contacto@portalempleos.com>, 2025.
+# Ramses Martinez <contacto@portalempleos.com.mx>, 2025.
 #
 #, fuzzy
 msgid ""

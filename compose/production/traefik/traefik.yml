@@ -22,7 +22,7 @@ certificatesResolvers:
   letsencrypt:
     # https://doc.traefik.io/traefik/https/acme/#lets-encrypt
     acme:
-      email: 'contacto@portalempleos.com'
+      email: 'contacto@portalempleos.com.mx'
       storage: /etc/traefik/acme/acme.json
       # https://doc.traefik.io/traefik/https/acme/#httpchallenge
       httpChallenge:
@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: 'Host(`portalempleos.com`) || Host(`www.portalempleos.com`)'
+      rule: 'Host(`portalempleos.com.mx`) || Host(`www.portalempleos.com.mx`)'
       entryPoints:
         - web-secure
       middlewares:
@@ -42,7 +42,7 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: 'Host(`portalempleos.com`)'
+      rule: 'Host(`portalempleos.com.mx`)'
       entryPoints:
         - flower
       service: flower
