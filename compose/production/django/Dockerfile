@@ -89,6 +89,9 @@ COPY --chown=django:django . ${APP_HOME}
 # make django owner of the WORKDIR directory as well.
 RUN chown -R django:django ${APP_HOME}
 
+# Create staticfiles directory for collectstatic
+RUN mkdir -p ${APP_HOME}/staticfiles && chown -R django:django ${APP_HOME}/staticfiles
+
 USER django
 
 RUN DATABASE_URL="" \

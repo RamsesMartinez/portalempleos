@@ -84,6 +84,9 @@ AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY")
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_STORAGE_BUCKET_NAME = env("DJANGO_AWS_STORAGE_BUCKET_NAME")
+
+# Ensure S3 client uses the correct region
+AWS_S3_ADDRESSING_STYLE = 'virtual'
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_QUERYSTRING_AUTH = env.bool("DJANGO_AWS_QUERYSTRING_AUTH", default=True)
 # DO NOT change these unless you know what you're doing.
@@ -105,10 +108,15 @@ AWS_REGION_NAME = env("DJANGO_AWS_S3_REGION_NAME")
 AWS_S3_REGION_NAME = AWS_REGION_NAME
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#cloudfront
 AWS_S3_CUSTOM_DOMAIN = env("DJANGO_AWS_S3_CUSTOM_DOMAIN", default=None)
-aws_s3_domain = AWS_S3_CUSTOM_DOMAIN or f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-AWS_FINAL_S3_DOMAIN = (
-    AWS_S3_CUSTOM_DOMAIN or f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-)
+
+# Build S3 domain with correct region
+if AWS_S3_CUSTOM_DOMAIN:
+    aws_s3_domain = AWS_S3_CUSTOM_DOMAIN
+    AWS_FINAL_S3_DOMAIN = AWS_S3_CUSTOM_DOMAIN
+else:
+    # Use region-specific endpoint for mx-central-1
+    aws_s3_domain = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
+    AWS_FINAL_S3_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
 # STATIC & MEDIA
 # ------------------------
 STORAGES = {
