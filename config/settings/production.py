@@ -71,6 +71,11 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
     default=True,
 )
 
+AWS_DEFAULT_ACL = env("DJANGO_AWS_DEFAULT_ACL", default="private")
+AWS_S3_SECURE_URLS = env.bool("DJANGO_AWS_S3_SECURE_URLS", default=True)
+AWS_IS_GZIPPED = env.bool("DJANGO_AWS_IS_GZIPPED", default=True)
+AWS_S3_FILE_OVERWRITE = env.bool("DJANGO_AWS_S3_FILE_OVERWRITE", default=False)
+AWS_S3_SIGNATURE_VERSION = env.str("DJANGO_AWS_S3_SIGNATURE_VERSION", default="s3v4")
 
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID")
@@ -79,23 +84,30 @@ AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY")
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_STORAGE_BUCKET_NAME = env("DJANGO_AWS_STORAGE_BUCKET_NAME")
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
-AWS_QUERYSTRING_AUTH = False
+AWS_QUERYSTRING_AUTH = env.bool("DJANGO_AWS_QUERYSTRING_AUTH", default=True)
 # DO NOT change these unless you know what you're doing.
-_AWS_EXPIRY = 60 * 60 * 24 * 7
+_AWS_EXPIRY = 60 * 60 * 24 * 7  # 7 days
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_STORAGE_CLASS = env.str("DJANGO_AWS_STORAGE_CLASS", default="STANDARD_IA")
 AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": f"max-age={_AWS_EXPIRY}, s-maxage={_AWS_EXPIRY}, must-revalidate",
+    "StorageClass": AWS_STORAGE_CLASS,
 }
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_S3_MAX_MEMORY_SIZE = env.int(
     "DJANGO_AWS_S3_MAX_MEMORY_SIZE",
     default=100_000_000,  # 100MB
 )
+AWS_S3_VERIFY = env.bool("DJANGO_AWS_S3_VERIFY", default=True)
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
-AWS_S3_REGION_NAME = env("DJANGO_AWS_S3_REGION_NAME", default=None)
+AWS_REGION_NAME = env("DJANGO_AWS_S3_REGION_NAME")
+AWS_S3_REGION_NAME = AWS_REGION_NAME
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#cloudfront
 AWS_S3_CUSTOM_DOMAIN = env("DJANGO_AWS_S3_CUSTOM_DOMAIN", default=None)
 aws_s3_domain = AWS_S3_CUSTOM_DOMAIN or f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+AWS_FINAL_S3_DOMAIN = (
+    AWS_S3_CUSTOM_DOMAIN or f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+)
 # STATIC & MEDIA
 # ------------------------
 STORAGES = {
@@ -114,9 +126,10 @@ STORAGES = {
         },
     },
 }
-MEDIA_URL = f"https://{aws_s3_domain}/media/"
-COLLECTFASTA_STRATEGY = "collectfasta.strategies.boto3.Boto3Strategy"
-STATIC_URL = f"https://{aws_s3_domain}/static/"
+
+DEFAULT_FILE_STORAGE = "config.storage.MediaRootS3Boto3Storage"
+AWS_MEDIA_LOCATION = "media"
+MEDIA_URL = f"https://{AWS_FINAL_S3_DOMAIN}/{AWS_MEDIA_LOCATION}/"
 
 # EMAIL
 # ------------------------------------------------------------------------------
