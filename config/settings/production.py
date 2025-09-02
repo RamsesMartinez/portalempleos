@@ -131,6 +131,12 @@ DEFAULT_FILE_STORAGE = "config.storage.MediaRootS3Boto3Storage"
 AWS_MEDIA_LOCATION = "media"
 MEDIA_URL = f"https://{AWS_FINAL_S3_DOMAIN}/{AWS_MEDIA_LOCATION}/"
 
+# Collectfasta Strategy
+COLLECTFASTA_STRATEGY = "collectfasta.strategies.boto3.Boto3Strategy"
+
+# Static files URL
+STATIC_URL = f"https://{AWS_FINAL_S3_DOMAIN}/static/"
+
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
