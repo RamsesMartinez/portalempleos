@@ -1,0 +1,16 @@
+services:
+  docs:
+    image: portal_empleos_local_docs
+    container_name: portal_empleos_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./portal_empleos:/app/portal_empleos:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
