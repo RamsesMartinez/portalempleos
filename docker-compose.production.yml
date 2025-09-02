@@ -20,6 +20,7 @@ services:
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
+      - ./.envs/.production/.email
     command: /start
 
   postgres:
@@ -40,6 +41,8 @@ services:
     image: portal_empleos_production_traefik
     depends_on:
       - django
+    env_file:
+      - ./.envs/.production/.traefik
     volumes:
       - production_traefik:/etc/traefik/acme
     ports:
@@ -57,16 +60,28 @@ services:
   celeryworker:
     <<: *django
     image: portal_empleos_production_celeryworker
+    env_file:
+      - ./.envs/.production/.django
+      - ./.envs/.production/.postgres
+      - ./.envs/.production/.email
     command: /start-celeryworker
 
   celerybeat:
     <<: *django
     image: portal_empleos_production_celerybeat
+    env_file:
+      - ./.envs/.production/.django
+      - ./.envs/.production/.postgres
+      - ./.envs/.production/.email
     command: /start-celerybeat
 
   flower:
     <<: *django
     image: portal_empleos_production_flower
+    env_file:
+      - ./.envs/.production/.django
+      - ./.envs/.production/.postgres
+      - ./.envs/.production/.email
     command: /start-flower
 
   awscli:
@@ -75,5 +90,6 @@ services:
       dockerfile: ./compose/production/aws/Dockerfile
     env_file:
       - ./.envs/.production/.django
+      - ./.envs/.production/.postgres
     volumes:
       - production_postgres_data_backups:/backups:z
