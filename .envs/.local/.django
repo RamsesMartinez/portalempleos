@@ -1,0 +1,21 @@
+# Django Configuration for Local Development
+DJANGO_SECRET_KEY=5b2CYt7boK1lgNpUUoL82vMCuSxT9NhNOdVEIiPr1GqoAXVFwWXC4harGqrjhsLN
+DJANGO_DEBUG=True
+DJANGO_READ_DOT_ENV_FILE=True
+
+# Email Configuration
+EMAIL_HOST=mailpit
+EMAIL_PORT=1025
+
+# Database Configuration
+POSTGRES_DB=portal_empleos_local
+POSTGRES_USER=portal_empleos_user
+POSTGRES_PASSWORD=portal_empleos_password
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+
+# Redis Configuration
+REDIS_URL=redis://redis:6379/0
+
+# Use Docker
+USE_DOCKER=yes

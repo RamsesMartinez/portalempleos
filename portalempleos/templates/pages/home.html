@@ -1,3 +1,132 @@
 {% extends "base.html" %}
 
+{% block title %}Portal de Empleos - En Construcción{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title fade-in">🚀 Portal de Empleos</h1>
+    <p class="hero-subtitle fade-in delay-1">
+      Estamos construyendo la plataforma más innovadora para conectar talento con oportunidades laborales. 
+      Pronto estarás navegando por miles de ofertas de trabajo.
+    </p>
+    <div class="fade-in delay-2">
+      <a href="#features" class="btn-primary">Conoce Nuestras Características</a>
+      <a href="#progress" class="btn-secondary">Ver Progreso</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fade-in" style="font-size: 2.5rem; font-weight: 700; color: var(--gray-dark);">
+        ¿Qué Estamos Construyendo?
+      </h2>
+      <p class="fade-in delay-1" style="color: var(--gray-medium); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+        Una plataforma completa que revolucionará la búsqueda de empleo y la contratación de talento
+      </p>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card fade-in delay-1">
+        <div class="feature-icon">
+          🔍
+        </div>
+        <h3 class="feature-title">Búsqueda Inteligente</h3>
+        <p class="feature-description">
+          Algoritmos avanzados que te conectan con las mejores oportunidades según tu perfil, experiencia y preferencias.
+        </p>
+      </div>
+      
+      <div class="feature-card fade-in delay-2">
+        <div class="feature-icon">
+          💼
+        </div>
+        <h3 class="feature-title">Perfiles Profesionales</h3>
+        <p class="feature-description">
+          Crea un perfil destacado que muestre tus habilidades, experiencia y logros de manera profesional.
+        </p>
+      </div>
+      
+      <div class="feature-card fade-in delay-3">
+        <div class="feature-icon">
+          🚀
+        </div>
+        <h3 class="feature-title">Aplicación Rápida</h3>
+        <p class="feature-description">
+          Aplica a múltiples ofertas con un solo clic. Sistema de seguimiento en tiempo real de tus candidaturas.
+        </p>
+      </div>
+      
+      <div class="feature-card fade-in delay-1">
+        <div class="feature-icon">
+          📱
+        </div>
+        <h3 class="feature-title">Multiplataforma</h3>
+        <p class="feature-description">
+          Accede desde cualquier dispositivo. Diseño responsive optimizado para móviles, tablets y computadoras.
+        </p>
+      </div>
+      
+      <div class="feature-card fade-in delay-2">
+        <div class="feature-icon">
+          🔔
+        </div>
+        <h3 class="feature-title">Notificaciones Inteligentes</h3>
+        <p class="feature-description">
+          Recibe alertas personalizadas sobre nuevas ofertas que coincidan con tu perfil y preferencias.
+        </p>
+      </div>
+      
+      <div class="feature-card fade-in delay-3">
+        <div class="feature-icon">
+          📊
+        </div>
+        <h3 class="feature-title">Analytics Avanzados</h3>
+        <p class="feature-description">
+          Estadísticas detalladas sobre el mercado laboral, tendencias salariales y demanda de habilidades.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section style="background-color: white; padding: 5rem 0; text-align: center;">
+  <div class="container">
+    <div class="fade-in">
+      <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--gray-dark); margin-bottom: 1.5rem;">
+        ¿Quieres Ser el Primero en Saberlo?
+      </h2>
+      <p style="color: var(--gray-medium); margin-bottom: 2rem; font-size: 1.1rem;">
+        Suscríbete para recibir notificaciones cuando estemos listos para lanzar
+      </p>
+      <a href="#" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+        Notificarme del Lanzamiento
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#features">Características</a>
+        <a href="#progress">Progreso</a>
+        <a href="{% url 'about' %}">Acerca de</a>
+        <a href="#">Contacto</a>
+      </div>
+      <div class="footer-copyright">
+        © 2024 Portal de Empleos. Todos los derechos reservados.
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
 

@@ -7,8 +7,8 @@ from pathlib import Path
 import environ
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# portal_empleos/
-APPS_DIR = BASE_DIR / "portal_empleos"
+# portalempleos/
+APPS_DIR = BASE_DIR / "portalempleos"
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
@@ -46,7 +46,16 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("POSTGRES_DB", default="portal_empleos_local"),
+        "USER": env("POSTGRES_USER", default="portal_empleos_user"),
+        "PASSWORD": env("POSTGRES_PASSWORD", default="portal_empleos_password"),
+        "HOST": env("POSTGRES_HOST", default="localhost"),
+        "PORT": env("POSTGRES_PORT", default="5432"),
+    }
+}
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -86,7 +95,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "portal_empleos.users",
+    "portalempleos.users",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -95,7 +104,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "portal_empleos.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "portalempleos.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -190,7 +199,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "portal_empleos.users.context_processors.allauth_settings",
+                "portalempleos.users.context_processors.allauth_settings",
             ],
         },
     },
@@ -317,13 +326,13 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # https://docs.allauth.org/en/latest/account/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://docs.allauth.org/en/latest/account/configuration.html
-ACCOUNT_ADAPTER = "portal_empleos.users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = "portalempleos.users.adapters.AccountAdapter"
 # https://docs.allauth.org/en/latest/account/forms.html
-ACCOUNT_FORMS = {"signup": "portal_empleos.users.forms.UserSignupForm"}
+ACCOUNT_FORMS = {"signup": "portalempleos.users.forms.UserSignupForm"}
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_ADAPTER = "portal_empleos.users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "portalempleos.users.adapters.SocialAccountAdapter"
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_FORMS = {"signup": "portal_empleos.users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {"signup": "portalempleos.users.forms.UserSocialSignupForm"}
 
 # django-rest-framework
 # -------------------------------------------------------------------------------

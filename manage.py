@@ -19,9 +19,9 @@ def main():
         ) from exc
 
     # This allows easy placement of apps within the interior
-    # portal_empleos directory.
+    # portalempleos directory.
     current_path = Path(__file__).parent.resolve()
-    sys.path.append(str(current_path / "portal_empleos"))
+    sys.path.append(str(current_path / "portalempleos"))
 
     execute_from_command_line(sys.argv)
 

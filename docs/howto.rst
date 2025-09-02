@@ -4,7 +4,7 @@ How To - Project Documentation
 Get Started
 ----------------------------------------------------------------------
 
-Documentation can be written as rst files in `portal_empleos/docs`.
+Documentation can be written as rst files in `portalempleos/docs`.
 
 
 To build and serve docs, use the commands::

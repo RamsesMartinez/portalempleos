@@ -1,3 +1,84 @@
 {% extends "base.html" %}
 
+{% block title %}Acerca de - Portal de Empleos{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 4rem 0;">
+  <div class="text-center mb-5">
+    <h1 class="fade-in" style="font-size: 3rem; font-weight: 800; color: var(--gray-dark); margin-bottom: 1.5rem;">
+      Acerca de Portal de Empleos
+    </h1>
+    <p class="fade-in delay-1" style="color: var(--gray-medium); font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+      Estamos construyendo la plataforma más innovadora para conectar talento con oportunidades laborales en Latinoamérica
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="fade-in delay-1">
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          🎯 Nuestra Misión
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7;">
+          Democratizar el acceso al empleo de calidad, conectando a profesionales talentosos con empresas que buscan crecer. 
+          Creemos que cada persona merece encontrar su trabajo ideal y cada empresa merece encontrar al candidato perfecto.
+        </p>
+      </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+      <div class="fade-in delay-2">
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          🌟 Nuestra Visión
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7;">
+          Ser la plataforma líder en Latinoamérica para la búsqueda de empleo, reconocida por su innovación, 
+          transparencia y compromiso con la excelencia en el servicio al usuario.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-4 mb-4">
+      <div class="fade-in delay-1" style="text-align: center; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+        <h3 style="color: var(--gray-dark); font-weight: 700; margin-bottom: 1rem;">Innovación</h3>
+        <p style="color: var(--gray-medium);">Utilizamos las últimas tecnologías para crear una experiencia única y eficiente.</p>
+      </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+      <div class="fade-in delay-2" style="text-align: center; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
+        <h3 style="color: var(--gray-dark); font-weight: 700; margin-bottom: 1rem;">Confianza</h3>
+        <p style="color: var(--gray-medium);">Construimos relaciones duraderas basadas en la transparencia y la honestidad.</p>
+      </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+      <div class="fade-in delay-3" style="text-align: center; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">💡</div>
+        <h3 style="color: var(--gray-dark); font-weight: 700; margin-bottom: 1rem;">Excelencia</h3>
+        <p style="color: var(--gray-medium);">Nos esforzamos por superar las expectativas en cada interacción.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-5">
+    <div class="fade-in delay-2">
+      <h2 style="color: var(--gray-dark); font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+        ¿Listo para el Futuro del Empleo?
+      </h2>
+      <p style="color: var(--gray-medium); margin-bottom: 2rem; font-size: 1.1rem;">
+        Únete a nosotros en este viaje hacia la transformación del mercado laboral
+      </p>
+      <a href="{% url 'home' %}" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+        Volver al Inicio
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
 
