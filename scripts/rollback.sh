@@ -1,28 +1,99 @@
 #!/bin/bash
 
+# Production Rollback Script
+# This script rolls back to the previous version in case of deployment failure
+
 set -e
 
-# Emergency Rollback Script for Django Cookiecutter
-# Based on community best practices
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
 
-echo "🚨 Starting emergency rollback..."
+print_status() {
+    echo -e "${BLUE}[INFO]${NC} $1"
+}
 
-# 1. Stop all services
-echo "⏹️  Stopping all services..."
-docker-compose -f docker-compose.production.yml down
+print_success() {
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
+}
 
-# 2. Restore database from backup (if available)
-if [ -n "${BACKUP_FILE:-}" ]; then
-    echo "🗄️  Restoring database from backup: ${BACKUP_FILE}"
-    docker-compose -f docker-compose.production.yml run --rm awscli restore "${BACKUP_FILE}"
-else
-    echo "⚠️  No backup file specified. Database will remain as is."
+print_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
+
+echo "🔄 Starting production rollback..."
+
+# Check if backup file exists
+if [ ! -f "docker-compose.production.yml.backup" ]; then
+    print_error "No backup file found: docker-compose.production.yml.backup"
+    print_error "Cannot perform rollback. Manual intervention required."
+    exit 1
 fi
 
-# 3. Start previous version (you should tag your images)
-echo "🔄 Starting previous version..."
-# docker-compose -f docker-compose.production.yml pull
-docker-compose -f docker-compose.production.yml up -d
+# Check if Docker is running
+if ! docker info > /dev/null 2>&1; then
+    print_error "Docker is not running"
+    exit 1
+fi
 
-echo "✅ Rollback completed!"
-echo "📊 Check application status: docker-compose -f docker-compose.production.yml logs -f"
+# Confirm rollback
+echo ""
+print_warning "⚠️  WARNING: This will rollback to the previous version!"
+print_warning "All current changes will be lost!"
+echo ""
+read -p "Are you sure you want to continue? (yes/no): " confirm
+
+if [ "$confirm" != "yes" ]; then
+    print_status "Rollback cancelled by user"
+    exit 0
+fi
+
+# Stop all current services
+print_status "Stopping current services..."
+docker compose -f docker-compose.production.yml down --timeout 30
+
+# Restore previous configuration
+print_status "Restoring previous configuration..."
+mv docker-compose.production.yml.backup docker-compose.production.yml
+
+# Start services with previous configuration
+print_status "Starting services with previous configuration..."
+if docker compose -f docker-compose.production.yml up -d; then
+    print_success "Services started with previous configuration"
+else
+    print_error "Failed to start services with previous configuration"
+    print_error "Manual intervention required!"
+    exit 1
+fi
+
+# Wait for services to be ready
+print_status "Waiting for services to be ready..."
+sleep 15
+
+# Verify services are running
+print_status "Verifying services are running..."
+if docker compose -f docker-compose.production.yml ps | grep -q "Up"; then
+    print_success "Rollback completed successfully!"
+    echo ""
+    print_status "Current service status:"
+    docker compose -f docker-compose.production.yml ps
+    echo ""
+    print_status "Rollback completed at: $(date)"
+    print_status "Previous version is now running"
+else
+    print_error "Services are not running properly after rollback"
+    print_error "Manual intervention required!"
+    exit 1
+fi
+
+echo ""
+print_warning "💡 Remember to investigate why the deployment failed"
+print_warning "💡 Check logs: docker compose -f docker-compose.production.yml logs -f"
+print_warning "💡 Check status: ./scripts/status.sh"
