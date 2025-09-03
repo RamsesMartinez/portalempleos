@@ -231,3 +231,11 @@ class MediaRootS3Boto3Storage(SecureS3Storage):
     location = settings.AWS_MEDIA_LOCATION
     default_acl = "private"
     file_overwrite = False
+
+
+class StaticRootS3Boto3Storage(S3Boto3Storage):
+    """Storage for static files"""
+    
+    location = "static"
+    default_acl = "public-read"
+    file_overwrite = True

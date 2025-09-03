@@ -128,13 +128,16 @@ STORAGES = {
         },
     },
     "staticfiles": {
-        "BACKEND": "storages.backends.s3.S3Storage",
+        "BACKEND": "storages.backends.s3.S3ManifestStaticStorage",
         "OPTIONS": {
             "location": "static",
             # Removed default_acl since bucket doesn't support ACLs
         },
     },
 }
+
+# Configurar el storage para archivos estáticos
+STATICFILES_STORAGE = "storages.backends.s3.S3ManifestStaticStorage"
 
 DEFAULT_FILE_STORAGE = "config.storage.MediaRootS3Boto3Storage"
 AWS_MEDIA_LOCATION = "media"
