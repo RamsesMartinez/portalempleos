@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block title %}Términos de Uso - Portal de Empleos{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 4rem 0;">
+  <div class="text-center mb-5">
+    <h1 class="fade-in" style="font-size: 3rem; font-weight: 800; color: var(--gray-dark); margin-bottom: 1.5rem;">
+      Términos de Uso
+    </h1>
+    <p class="fade-in delay-1" style="color: var(--gray-medium); font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+      Última actualización: {{ "now"|date:"d/m/Y" }}
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="fade-in delay-1" style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          📋 Aceptación de los Términos
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Al acceder y utilizar Portal de Empleos, aceptas estar sujeto a estos términos de uso. 
+          Si no estás de acuerdo con alguna parte de estos términos, no debes utilizar nuestros servicios.
+        </p>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          🎯 Descripción del Servicio
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Portal de Empleos es una plataforma que conecta a candidatos en búsqueda de empleo con empresas 
+          que ofrecen oportunidades laborales. Nuestros servicios incluyen:
+        </p>
+        <ul style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 2rem; padding-left: 1.5rem;">
+          <li>Publicación gratuita de vacantes de empleo</li>
+          <li>Búsqueda y visualización de ofertas laborales</li>
+          <li>Postulación a vacantes mediante envío de CV</li>
+          <li>Conectividad directa entre candidatos y empresas</li>
+        </ul>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          👥 Uso del Servicio por Candidatos
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Como candidato, puedes:
+        </p>
+        <ul style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+          <li>Buscar y revisar vacantes de empleo</li>
+          <li>Postularte a ofertas laborales</li>
+          <li>Enviar tu CV e información de contacto a las empresas</li>
+        </ul>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 2rem;">
+          <strong>Responsabilidades:</strong> Debes proporcionar información veraz y actualizada, 
+          y respetar los derechos de propiedad intelectual de terceros.
+        </p>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          🏢 Uso del Servicio por Empresas
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Como empresa, puedes:
+        </p>
+        <ul style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+          <li>Publicar vacantes de empleo gratuitamente</li>
+          <li>Recibir CVs y postulaciones de candidatos</li>
+          <li>Contactar directamente con los postulantes</li>
+        </ul>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 2rem;">
+          <strong>Responsabilidades:</strong> Debes proporcionar información veraz sobre las vacantes, 
+          respetar las leyes laborales y no discriminar por motivos ilegales.
+        </p>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          📝 Contenido y Publicaciones
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Al publicar contenido en nuestro sitio, garantizas que:
+        </p>
+        <ul style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+          <li>El contenido es veraz y preciso</li>
+          <li>Tienes los derechos para publicar dicho contenido</li>
+          <li>No viola derechos de terceros</li>
+          <li>No es ofensivo, difamatorio o ilegal</li>
+        </ul>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 2rem;">
+          Nos reservamos el derecho de moderar y eliminar contenido que no cumpla con estos términos.
+        </p>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          🔒 Privacidad y Datos Personales
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          El uso de tu información personal se rige por nuestra Política de Privacidad. 
+          Al utilizar nuestros servicios, consientes la recopilación y uso de tu información 
+          de acuerdo con dicha política.
+        </p>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          💰 Gratuidad y Futuros Planes
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Actualmente, todos nuestros servicios son gratuitos. Sin embargo, nos reservamos 
+          el derecho de introducir planes de pago en el futuro. Los usuarios serán notificados 
+          con anticipación sobre cualquier cambio en la estructura de precios.
+        </p>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          📱 Servicios de Terceros
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Nuestro sitio puede integrar servicios de terceros para mejorar la experiencia del usuario. 
+          Estos servicios están sujetos a sus propios términos y políticas de privacidad.
+        </p>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          🚫 Uso Prohibido
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Está prohibido:
+        </p>
+        <ul style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 2rem; padding-left: 1.5rem;">
+          <li>Usar el servicio para actividades ilegales o fraudulentas</li>
+          <li>Intentar acceder no autorizado a nuestros sistemas</li>
+          <li>Interferir con el funcionamiento del sitio</li>
+          <li>Publicar contenido spam o malicioso</li>
+          <li>Usar bots o scripts automatizados sin autorización</li>
+        </ul>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          ⚖️ Limitación de Responsabilidad
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Portal de Empleos actúa como intermediario entre candidatos y empresas. No somos responsables por:
+        </p>
+        <ul style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 2rem; padding-left: 1.5rem;">
+          <li>La calidad o veracidad de las ofertas de empleo</li>
+          <li>El resultado de los procesos de contratación</li>
+          <li>Los acuerdos entre candidatos y empresas</li>
+          <li>Daños indirectos o consecuenciales</li>
+        </ul>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          🔄 Modificaciones del Servicio
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Nos reservamos el derecho de:
+        </p>
+        <ul style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 2rem; padding-left: 1.5rem;">
+          <li>Modificar o discontinuar servicios</li>
+          <li>Cambiar estos términos de uso</li>
+          <li>Actualizar políticas y procedimientos</li>
+          <li>Implementar nuevas funcionalidades</li>
+        </ul>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          📧 Comunicaciones
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Al utilizar nuestros servicios, consientes recibir comunicaciones relacionadas con:
+        </p>
+        <ul style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 2rem; padding-left: 1.5rem;">
+          <li>Actualizaciones del servicio</li>
+          <li>Cambios en términos y políticas</li>
+          <li>Información sobre nuevas funcionalidades</li>
+          <li>Ofertas y promociones (con opción de cancelación)</li>
+        </ul>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          🌍 Jurisdicción y Ley Aplicable
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Estos términos se rigen por las leyes de México. Cualquier disputa será resuelta 
+          en los tribunales competentes de México, salvo que la ley aplicable disponga lo contrario.
+        </p>
+
+        <h2 style="color: var(--blue-corporate); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">
+          📞 Contacto y Soporte
+        </h2>
+        <p style="color: var(--gray-medium); line-height: 1.7; margin-bottom: 1.5rem;">
+          Si tienes preguntas sobre estos términos o necesitas soporte, contáctanos a través 
+          de nuestro formulario de contacto en el sitio web.
+        </p>
+
+        <div class="text-center mt-5">
+          <a href="{% url 'home' %}" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+            Volver al Inicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
