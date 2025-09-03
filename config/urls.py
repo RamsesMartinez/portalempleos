@@ -5,6 +5,7 @@ from django.urls import include
 from django.urls import path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
+from django.views.static import serve
 from drf_spectacular.views import SpectacularAPIView
 from drf_spectacular.views import SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
@@ -25,6 +26,13 @@ urlpatterns = [
         "terms-of-service/",
         TemplateView.as_view(template_name="pages/terms_of_service.html"),
         name="terms_of_service",
+    ),
+    # Google AdSense ads.txt file
+    path(
+        "ads.txt",
+        serve,
+        {"path": "ads.txt", "document_root": "portalempleos/static"},
+        name="ads_txt",
     ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
