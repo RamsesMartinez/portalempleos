@@ -89,6 +89,7 @@ AWS_STORAGE_BUCKET_NAME = env("DJANGO_AWS_STORAGE_BUCKET_NAME")
 AWS_S3_ADDRESSING_STYLE = 'virtual'
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_QUERYSTRING_AUTH = env.bool("DJANGO_AWS_QUERYSTRING_AUTH", default=True)
+AWS_S3_QUERYSTRING_AUTH = env.bool("DJANGO_AWS_QUERYSTRING_AUTH", default=True)
 # DO NOT change these unless you know what you're doing.
 _AWS_EXPIRY = 60 * 60 * 24 * 7  # 7 days
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
@@ -128,16 +129,17 @@ STORAGES = {
         },
     },
     "staticfiles": {
-        "BACKEND": "storages.backends.s3.S3ManifestStaticStorage",
+        "BACKEND": "storages.backends.s3.S3StaticStorage",
         "OPTIONS": {
             "location": "static",
-            # Removed default_acl since bucket doesn't support ACLs
+            "querystring_auth": True,
+            "file_overwrite": True,
         },
     },
 }
 
 # Configurar el storage para archivos estáticos
-STATICFILES_STORAGE = "storages.backends.s3.S3ManifestStaticStorage"
+STATICFILES_STORAGE = "storages.backends.s3.S3StaticStorage"
 
 DEFAULT_FILE_STORAGE = "config.storage.MediaRootS3Boto3Storage"
 AWS_MEDIA_LOCATION = "media"
