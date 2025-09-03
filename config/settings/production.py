@@ -143,8 +143,11 @@ DEFAULT_FILE_STORAGE = "config.storage.MediaRootS3Boto3Storage"
 AWS_MEDIA_LOCATION = "media"
 MEDIA_URL = f"https://{AWS_FINAL_S3_DOMAIN}/{AWS_MEDIA_LOCATION}/"
 
-# Collectfasta Strategy
-COLLECTFASTA_STRATEGY = "collectfasta.strategies.boto3.Boto3Strategy"
+# Collectfasta
+# ------------------------------------------------------------------------------
+# https://github.com/jasongi/collectfasta#installation
+# Disabled in production due to conflicts with S3ManifestStaticStorage
+# INSTALLED_APPS = ["collectfasta", *INSTALLED_APPS]
 
 # Static files URL
 STATIC_URL = f"https://{AWS_FINAL_S3_DOMAIN}/static/"
@@ -179,11 +182,6 @@ INSTALLED_APPS += ["anymail"]
 # https://anymail.readthedocs.io/en/stable/esps
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 ANYMAIL = {}
-
-# Collectfasta
-# ------------------------------------------------------------------------------
-# https://github.com/jasongi/collectfasta#installation
-INSTALLED_APPS = ["collectfasta", *INSTALLED_APPS]
 
 # LOGGING
 # ------------------------------------------------------------------------------
