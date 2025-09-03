@@ -1,211 +1,259 @@
-# 🚀 Job Portal
+# Portal de Empleos
 
-[![Python](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/)
-[![Django](https://img.shields.io/badge/Django-5.1+-green.svg)](https://www.djangoproject.com/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue.svg)](https://www.postgresql.org/)
-[![Redis](https://img.shields.io/badge/Redis-6.2+-red.svg)](https://redis.io/)
-[![Docker](https://img.shields.io/badge/Docker-20.10+-blue.svg)](https://www.docker.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](CONTRIBUTING.md)
+Job portal for everyone. Platform that connects job seekers with companies offering employment opportunities.
 
-> **Connecting talent with job opportunities without barriers**
+## 🚀 Features
 
-## 🌟 **What is Job Portal?**
+- **Intelligent Search**: Advanced algorithms to connect talent with opportunities
+- **Professional Profiles**: Creation of outstanding profiles
+- **Quick Application**: Simplified application system
+- **Multi-platform**: Responsive design for all devices
+- **Smart Notifications**: Personalized alerts for new opportunities
+- **Advanced Analytics**: Labor market statistics
 
-Job Portal is an innovative platform designed to **eliminate traditional barriers** that companies face when seeking talented employees. Our mission is to democratize access to the job market, allowing both companies and candidates to connect freely, efficiently, and without exorbitant costs.
+## 🛠️ Technologies
 
-### 🎯 **Our Purpose**
+- **Backend**: Django 5.1
+- **Database**: PostgreSQL
+- **Cache**: Redis
+- **Task Queue**: Celery
+- **Frontend**: Bootstrap 5, Custom CSS
+- **Deployment**: Docker, Docker Compose
+- **Storage**: AWS S3
+- **Reverse Proxy**: Traefik
 
-- **Total Freedom**: All companies can post job openings without restrictions
-- **Free Search**: Candidates can explore opportunities without limitations
-- **No High Costs**: We eliminate the financial barriers of traditional recruitment
-- **Universal Access**: Open platform for companies of all sizes
+## 📋 Requirements
 
-## ✨ **Key Features**
+- Python 3.11+
+- Docker and Docker Compose
+- PostgreSQL
+- Redis
 
-### 🏢 **For Companies**
-- **Free Job Posting** for all positions
-- **Complete Business Dashboard** with analytics
-- **Advanced Candidate Filters** for precise matching
-- **Intelligent Matching System** using AI algorithms
-- **Application Analytics** and insights
+## 🚀 Production Deployment
 
-### 👥 **For Candidates**
-- **Free Job Search** without limitations
-- **Professional Profiles** that stand out
-- **Personalized Alerts** for new opportunities
-- **Simplified Application** process
-- **Application Tracking** and status updates
+### Available Scripts
 
-### 🚀 **Technical Features**
-- **Intelligent Search** with advanced algorithms
-- **Real-time Notification System**
-- **Complete REST API** for integrations
-- **Robust Admin Panel** for management
-- **Secure User System** with authentication
-
-## 🖼️ **Preview**
-
-![Job Portal Landing Page](portalempleos/static/images/screenshots/portalempleos-landing.png)
-
-*Platform landing page showing the modern and attractive interface*
-
-## 🛠️ **Technology Stack**
-
-### **Backend**
-- **Django 5.1+** - Robust and scalable web framework
-- **Python 3.12+** - Modern and efficient programming language
-- **PostgreSQL 15+** - High-performance relational database
-- **Redis 6.2+** - Cache and message broker
-- **Celery** - Asynchronous task processing
-
-### **Frontend**
-- **Django Templates** - Server-side rendering for SEO
-- **HTMX** - Modern interactivity without complex JavaScript
-- **Custom CSS** - Responsive and attractive design
-- **Vanilla JavaScript** - Light interactive functionalities
-
-### **Infrastructure**
-- **Docker & Docker Compose** - Containers for development and production
-- **Traefik** - Reverse proxy with automatic SSL
-- **AWS S3** - Static files and media storage
-- **Gunicorn** - Production WSGI server
-- **Nginx** - High-performance web server
-
-### **DevOps & Monitoring**
-- **GitHub Actions** - Automated CI/CD
-- **Sentry** - Real-time error monitoring
-- **Django Debug Toolbar** - Development tools
-- **Collectfasta** - Static files optimization
-
-## 📊 **Project Metrics**
-
-[![Lines of Code](https://img.shields.io/tokei/lines/github/ramthedev/portalempleos)](https://github.com/ramsesmartinez/portalempleos)
-[![GitHub stars](https://img.shields.io/github/stars/ramthedev/portalempleos?style=social)](https://github.com/ramsesmartinez/portalempleos)
-[![GitHub forks](https://img.shields.io/github/forks/ramthedev/portalempleos?style=social)](https://github.com/ramsesmartinez/portalempleos)
-[![GitHub issues](https://img.shields.io/github/issues/ramthedev/ramthedev/portalempleos)](https://github.com/ramsesmartinez/portalempleos/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/ramthedev/portalempleos)](https://github.com/ramsesmartinez/portalempleos/pulls)
-
-### **Code Statistics**
-- **Files**: 150+
-- **Functions**: 200+
-- **Tests**: 95%+ coverage
-- **Documentation**: Complete and updated
-- **Deployment**: Automated with CI/CD
-
-## 🚀 **Quick Installation**
-
-### **Prerequisites**
-- Python 3.12+
-- Docker & Docker Compose
-- Git
-
-### **Clone and Run**
+#### 1. **Complete Deployment** (`./scripts/deploy.sh`)
 ```bash
-# Clone the repository
-git clone https://github.com/ramsesmartinez/portalempleos.git
-cd portalempleos
+./scripts/deploy.sh
+```
+- ✅ Pre-deployment checks
+- 🔄 Automatic backup of configuration and database
+- 🐳 Docker container build and deployment
+- 🗄️ Database migrations
+- 📁 Automatic static files collection
+- 🔍 Post-deployment verification
+- 🚨 Automatic rollback on failure
 
-# Configure environment variables
-cp .envs/.local/.django.example .envs/.local/.django
-cp .envs/.local/.postgres.example .envs/.local/.postgres
+#### 2. **Status Verification** (`./scripts/status.sh`)
+```bash
+./scripts/status.sh
+```
+- 🔍 Status of all services
+- 📊 Resource usage
+- 📝 Recent error logs
+- 💾 Disk usage
+- 🐳 Docker usage
 
-# Run with Docker
+#### 3. **Emergency Rollback** (`./scripts/rollback.sh`)
+```bash
+./scripts/rollback.sh
+```
+- ⚠️ User confirmation required
+- 🔄 Restoration to previous version
+- 🚨 For critical failure cases
+
+### Deployment Flow
+
+1. **Preparation**
+   ```bash
+   # Check current status
+   ./scripts/status.sh
+   
+   # Ensure no pending changes
+   git status
+   ```
+
+2. **Deployment**
+   ```bash
+   # Execute complete deployment
+   ./scripts/deploy.sh
+   ```
+
+3. **Verification**
+   ```bash
+   # Check post-deployment status
+   ./scripts/status.sh
+   
+   # Review logs if necessary
+   docker compose -f docker-compose.production.yml logs -f
+   ```
+
+4. **In case of problems**
+   ```bash
+   # Immediate rollback
+   ./scripts/rollback.sh
+   ```
+
+### System Services
+
+- **🌐 Django**: Main application (port 5000)
+- **🗄️ PostgreSQL**: Main database
+- **⚡ Redis**: Cache and message queue
+- **🚦 Traefik**: Reverse proxy and load balancer (ports 80, 443)
+- **⚙️ Celery Worker**: Background task processing
+- **⏰ Celery Beat**: Task scheduler
+- **🌸 Flower**: Celery monitoring (port 5555)
+- **☁️ AWS CLI**: Backup and S3 management
+
+## 🔧 Local Development
+
+### Environment Setup
+
+1. **Clone repository**
+   ```bash
+   git clone <repository-url>
+   cd portalempleos
+   ```
+
+2. **Create virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements/local.txt
+   ```
+
+4. **Configure environment variables**
+   ```bash
+   cp .envs/.local/.django .envs/.local/.django.example
+   # Edit .envs/.local/.django with your configurations
+   ```
+
+5. **Run migrations**
+   ```bash
+   python manage.py migrate
+   ```
+
+6. **Create superuser**
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+7. **Run development server**
+   ```bash
+   python manage.py runserver
+   ```
+
+### Local Docker Compose
+
+```bash
+# Local services
 docker compose -f docker-compose.local.yml up -d
 
-# Or run locally
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements/local.txt
-python manage.py migrate
-python manage.py runserver
+# Documentation services
+docker compose -f docker-compose.docs.yml up -d
 ```
 
-### **Quick Access**
-- **Application**: http://localhost:8000
-- **Admin**: http://localhost:8000/admin/
-- **Mailpit**: http://localhost:8025
-- **PostgreSQL**: localhost:5432
-- **Redis**: localhost:6380
-
-## 🏗️ **Project Architecture**
+## 📁 Project Structure
 
 ```
 portalempleos/
-├── 📁 config/                 # Django configuration
-├── 📁 portalempleos/          # Main application
-│   ├── 📁 users/             # User management
-│   ├── 📁 contrib/           # Project contributions
-│   ├── 📁 static/            # Static files
-│   └── 📁 templates/         # HTML templates
-├── 📁 compose/               # Docker configuration
-├── 📁 scripts/               # Automation scripts
-├── 📁 requirements/           # Python dependencies
-└── 📁 docs/                  # Documentation
+├── config/                 # Main Django configuration
+│   ├── settings/          # Environment-specific configurations
+│   ├── storage.py         # S3 storage configuration
+│   └── urls.py            # Main URLs
+├── portalempleos/         # Main application
+│   ├── templates/         # HTML templates
+│   ├── static/            # Static files
+│   └── users/             # Users application
+├── compose/               # Docker configurations
+│   ├── local/             # Local services
+│   └── production/        # Production services
+├── scripts/               # Automation scripts
+│   ├── deploy.sh          # Complete deployment
+│   ├── status.sh          # Status verification
+│   └── rollback.sh        # Emergency rollback
+└── requirements/           # Python dependencies
+    ├── base.txt           # Base dependencies
+    ├── local.txt          # Development dependencies
+    └── production.txt     # Production dependencies
 ```
 
-## 🌟 **Why Choose This Technology**
+## 🔒 Security
 
-### **Django + Templates + HTMX**
-- **Performance**: Server-side rendering for optimal SEO
-- **SEO**: Dynamic meta tags and automatic sitemaps
-- **Speed**: No heavy JavaScript, fast loading
-- **Security**: CSRF protection and robust validation
-- **Responsive**: Adaptive design for all devices
+- **HTTPS**: Automatic redirection in production
+- **HSTS**: Security headers configured
+- **CSRF**: CSRF protection enabled
+- **File validation**: Uploaded file validation system
+- **Authentication**: Robust system with django-allauth
 
-### **PostgreSQL + Redis**
-- **Reliability**: ACID and transactional database
-- **Performance**: Redis cache for frequent queries
-- **Security**: Granular users and permissions
-- **Scalability**: Optimized for large volumes
+## 📊 Monitoring
 
-## 🤝 **Contributing to the Project**
+- **Sentry**: Error and performance monitoring
+- **Flower**: Celery task monitoring
+- **Logs**: Configured logging system
+- **Health Checks**: Service health verifications
 
-Your contributions are welcome! This project is open to the community and we appreciate any type of help:
+## 🚨 Troubleshooting
 
-### **How to Contribute**
-1. **Fork** the project
-2. **Create** a branch for your feature (`git checkout -b feature/AmazingFeature`)
-3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** to the branch (`git push origin feature/AmazingFeature`)
-5. **Open** a Pull Request
+### Static Files Not Loading
 
-### **Types of Contributions**
-- **Report Bugs**
-- **Suggest Features**
-- **Improve Documentation**
-- **Add Tests**
-- **Optimize Code**
-- **Translations**
+If CSS/JS files don't load in production:
 
-## 📄 **License**
+1. **Verify S3 configuration**
+   ```bash
+   python manage.py check --settings=config.settings.production
+   ```
 
-This project is under the MIT License. See the [LICENSE](LICENSE) file for more details.
+2. **Run collectstatic**
+   ```bash
+   python manage.py collectstatic --noinput --settings=config.settings.production
+   ```
 
-## 🙏 **Acknowledgments**
+3. **Verify staticfiles.json in S3**
 
-### **Cookiecutter Django**
-This project was created thanks to the incredible [**cookiecutter-django**](https://github.com/cookiecutter/cookiecutter-django) template, which provides a solid and professional foundation for production Django projects.
+### Services Not Starting
 
-> **Cookiecutter Django** is a framework for quickly creating production-ready Django projects. With over **13.1k stars** on GitHub and an active community of **412+ contributors**, it's the standard reference for enterprise Django projects.
+1. **Check status**
+   ```bash
+   ./scripts/status.sh
+   ```
 
-### **Open Source Community**
-- **Django Software Foundation** for the web framework
-- **PostgreSQL Global Development Group** for the database
-- **Redis Labs** for the cache system
-- **Docker Inc** for container technology
+2. **Review logs**
+   ```bash
+   docker compose -f docker-compose.production.yml logs -f [service]
+   ```
 
-## 📞 **Contact and Support**
+3. **Check resources**
+   ```bash
+   docker stats
+   df -h
+   ```
 
-- **Website**: [portalempleos.com.mx](https://portalempleos.com.mx)
+## 🤝 Contributing
+
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is under the MIT License. See the `LICENSE` file for more details.
+
+## 📞 Contact
+
+- **Developer**: Ramses Martinez
 - **Email**: contacto@portalempleos.com.mx
+- **Website**: https://portalempleos.com.mx
 
----
+## 🙏 Acknowledgments
 
-<div align="center">
-
-**⭐ If you like this project, give it a star on GitHub! ⭐**
-
-*Building the future of employment, one connection at a time* 
-
-</div>
+- Django Cookiecutter for the base structure
+- Django community for best practices
+- Project contributors 
